@@ -1,20 +1,20 @@
-﻿using Jess.SmartExcel;
+﻿using Jess.DotNet.SmartExcel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+namespace Jess.DotNet.SmartExcel.Tests
 {
     class Program
     {
         static void Main(string[] args)
         {
-
-
             SmartExcel excel = new SmartExcel();
-            excel.CreateFile(@"C:\sjshiSourceCode\SmartExcel\ConsoleApp1\test.xls");
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "test.xls");
+            excel.CreateFile(path);
             excel.PrintGridLines = false;
 
             double height = 1.5;
@@ -47,7 +47,6 @@ namespace ConsoleApp1
             excel.WriteValue(ValueTypes.Text, CellFont.Font0, CellAlignment.LeftAlign, CellHiddenLocked.Normal, row, col, title, cellformat);
 
             excel.CloseFile();
-
 
         }
     }

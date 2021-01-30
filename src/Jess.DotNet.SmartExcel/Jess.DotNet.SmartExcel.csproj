@@ -1,7 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45;net20;net35;net40</TargetFrameworks>
+    <Version>0.0.0.1</Version>
+    <Description>Generate Biff 2.1 format Excel File(*.xls)</Description>
+    <PackageProjectUrl>https://github.com/ShiJess/Jess.DotNet.SmartExcel</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ShiJess/Jess.DotNet.SmartExcel</RepositoryUrl>
+    <PackageTags>Excel,Excel 2.1,xls,biff2</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Authors>Jess</Authors>
   </PropertyGroup>
 
+  
 </Project>

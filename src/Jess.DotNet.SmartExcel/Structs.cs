@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 /// 读写EXCEL文件所需的所有结构体的定义
 /// </summary>
 
-namespace Jess.SmartExcel
+namespace Jess.DotNet.SmartExcel
 {
 
 

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jess.SmartExcel
+namespace Jess.DotNet.SmartExcel
 {
     public class SmartExcelException : ApplicationException
     {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Reflection;
 
-namespace Jess.SmartExcel
+namespace Jess.DotNet.SmartExcel
 {
     /// <summary>
     /// Excel读写类

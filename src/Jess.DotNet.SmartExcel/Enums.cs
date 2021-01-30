@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Jess.SmartExcel
+namespace Jess.DotNet.SmartExcel
 {
     /// <summary>
     /// 所有的枚举类型定义
