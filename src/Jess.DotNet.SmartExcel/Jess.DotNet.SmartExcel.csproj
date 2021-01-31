@@ -1,15 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;net20;net35;net40</TargetFrameworks>
-    <Version>0.0.0.1</Version>
+    <TargetFrameworks>netstandard2.0;net45;net20;net35;net40;netcoreapp3.1;netcoreapp2.1</TargetFrameworks>
+    <!--;netstandard21;netcoreapp3.1;netcoreapp2.0-->
+    <!--<TargetFrameworks>netstandard2.0;netcoreapp3.1</TargetFrameworks>-->
+    <Version>0.0.0.2</Version>
     <Description>Generate Biff 2.1 format Excel File(*.xls)</Description>
     <PackageProjectUrl>https://github.com/ShiJess/Jess.DotNet.SmartExcel</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ShiJess/Jess.DotNet.SmartExcel</RepositoryUrl>
     <PackageTags>Excel,Excel 2.1,xls,biff2</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Authors>Jess</Authors>
+    <PackageReleaseNotes>.net core support fix.</PackageReleaseNotes>
   </PropertyGroup>
 
-  
+
+  <!--<ItemGroup>
+    <PackageReference Include="System.Memory" Version="4.5.4" />
+  </ItemGroup>-->
+
+  <!--<ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.0'">
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
+  </ItemGroup>-->
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.1'">
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
+    <!--<PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0" />-->
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" />
+  </ItemGroup>
+
+
 </Project>

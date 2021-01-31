@@ -26,30 +26,30 @@ Public Class Form1
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button
-        Me.Button2 = New System.Windows.Forms.Button
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(80, 64)
+        Me.Button1.Location = New System.Drawing.Point(107, 82)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(136, 48)
+        Me.Button1.Size = New System.Drawing.Size(181, 62)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Simple"
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(80, 152)
+        Me.Button2.Location = New System.Drawing.Point(107, 195)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(136, 48)
+        Me.Button2.Size = New System.Drawing.Size(181, 62)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "Complex"
         '
         'Form1
         '
-        Me.AutoScaleBaseSize = New System.Drawing.Size(6, 14)
-        Me.ClientSize = New System.Drawing.Size(292, 273)
+        Me.AutoScaleBaseSize = New System.Drawing.Size(8, 18)
+        Me.ClientSize = New System.Drawing.Size(405, 354)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"

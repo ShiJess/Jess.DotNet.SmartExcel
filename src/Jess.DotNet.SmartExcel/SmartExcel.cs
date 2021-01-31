@@ -10,6 +10,11 @@ namespace Jess.DotNet.SmartExcel
     /// </summary>
     public class SmartExcel
     {
+        /// <summary>
+        /// 文件采用的Encoding编码
+        /// </summary>
+        public System.Text.Encoding CodePage { get; set; }
+
         //        'the memory copy API is used in the MKI$ function which converts an integer
         //        'value to a 2-byte string value to write to the file. (used by the Horizontal
         //        'Page Break function).
@@ -191,7 +196,7 @@ namespace Jess.DotNet.SmartExcel
                         //                'to 32-bit).
                         for (x = 1; x <= m_shtHorizPageBreakRows.GetUpperBound(0); x++)
                         {
-                            FilePut(System.Text.Encoding.Default.GetBytes(MKI((short)(m_shtHorizPageBreakRows[x]))));
+                            FilePut(CodePage.GetBytes(MKI((short)(m_shtHorizPageBreakRows[x]))));
                         }
                     }
                     FilePut(m_udtEND_FILE_MARKER);
@@ -219,12 +224,25 @@ namespace Jess.DotNet.SmartExcel
             m_udtEND_FILE_MARKER.opcode = 10;
         }
 
-        public SmartExcel()
+#if NETCOREAPP2_0 || NETCOREAPP2_1 || NETCOREAPP3_1
+        static SmartExcel()
         {
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+        }
+        public SmartExcel() : this(System.Text.Encoding.GetEncoding(0)) { }
+#else
+        public SmartExcel() : this(System.Text.Encoding.Default) { }
+#endif
+        public SmartExcel(System.Text.Encoding codepage)
+        {
+            CodePage = codepage;
             Init();
         }
 
-
+        /// <summary>
+        /// 插入水平分页符
+        /// </summary>
+        /// <param name="lrow"></param>
         public void InsertHorizPageBreak(int lrow)
         {
             int row;
@@ -306,7 +324,8 @@ namespace Jess.DotNet.SmartExcel
                         //                        'Put record header
                         FilePut(TEXT_RECORD);
                         //                'Then the actual string data
-                        FilePut(System.Text.Encoding.Default.GetBytes(st));
+                        FilePut(CodePage.GetBytes(st));
+
                         break;
                     default: break;
                 }
@@ -370,7 +389,7 @@ namespace Jess.DotNet.SmartExcel
                 FONTNAME_RECORD.FontNameLength = (byte)l;//'CByte(Len(FontName))
                 FilePut(FONTNAME_RECORD);
                 //                        'Then the actual font name data
-                FilePut(System.Text.Encoding.Default.GetBytes(FontName));
+                FilePut(CodePage.GetBytes(FontName));
             }
             catch (Exception ex)
             {
@@ -390,7 +409,7 @@ namespace Jess.DotNet.SmartExcel
                 HEADER_RECORD.TextLength = (byte)l;// 'CByte(Len(HeaderText))
                 FilePut(HEADER_RECORD);
                 //                        'Then the actual Header text
-                FilePut(System.Text.Encoding.Default.GetBytes(HeaderText));
+                FilePut(CodePage.GetBytes(HeaderText));
             }
             catch (Exception ex)
             {
@@ -410,7 +429,7 @@ namespace Jess.DotNet.SmartExcel
                 FOOTER_RECORD.TextLength = (byte)l;
                 FilePut(FOOTER_RECORD);
                 //                    'Then the actual Header text
-                FilePut(System.Text.Encoding.Default.GetBytes(FooterText));
+                FilePut(CodePage.GetBytes(FooterText));
             }
             catch (Exception ex)
             {
@@ -428,7 +447,7 @@ namespace Jess.DotNet.SmartExcel
                 FILE_PASSWORD_RECORD.length = (short)l;
                 FilePut(FILE_PASSWORD_RECORD);
                 //          'Then the actual Password text
-                FilePut(System.Text.Encoding.Default.GetBytes(PasswordText));
+                FilePut(CodePage.GetBytes(PasswordText));
             }
             catch (Exception ex)
             {
@@ -500,12 +519,20 @@ namespace Jess.DotNet.SmartExcel
             //'used for writing integer array values to the disk file
             temp = "  ";
             RtlMoveMemory(ref temp, ref x, 2);
+
+            //todo 此部分代码仅在插入了水平分页符后有效
+            //unsafe  {
+            //     //byte* ss = new byte[10];
+            //     //byte* destination = temp;
+            //     Buffer.MemoryCopy(ref temp,ref x,2,2);
+            // }
+
             return temp;
         }
 
         private int GetLength(string strText)
         {
-            return System.Text.Encoding.Default.GetBytes(strText).Length;
+            return CodePage.GetBytes(strText).Length;
         }
 
         public void SetDefaultRowHeight(int HeightValue)

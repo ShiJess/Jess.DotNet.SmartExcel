@@ -7,7 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jess.DotNet.SmartExcel", "s
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DE054154-A6D2-4CF9-8013-1EBEACB85938}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jess.DotNet.SmartExcel.Tests", "test\Jess.DotNet.SmartExcel.Tests\Jess.DotNet.SmartExcel.Tests.csproj", "{73F803ED-D4B3-43FF-BF68-993BDE69EA49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jess.DotNet.SmartExcel.Tests", "test\Jess.DotNet.SmartExcel.Tests\Jess.DotNet.SmartExcel.Tests.csproj", "{73F803ED-D4B3-43FF-BF68-993BDE69EA49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{05DEF229-99BD-4A1E-BD91-2BE6288CCB0E}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,16 +1,15 @@
-﻿using Jess.DotNet.SmartExcel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Xunit;
 
 namespace Jess.DotNet.SmartExcel.Tests
 {
-    class Program
+    public class SmartExcelTests
     {
-        static void Main(string[] args)
+        [Fact]
+        public void Test()
         {
             SmartExcel excel = new SmartExcel();
             //SmartExcel excel = new SmartExcel(Encoding.GetEncoding(936));

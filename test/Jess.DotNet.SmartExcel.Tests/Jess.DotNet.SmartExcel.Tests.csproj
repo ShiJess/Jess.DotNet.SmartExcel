@@ -1,13 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
-    <OutputType>Exe</OutputType>
-    <!-- <TargetFramework>netcore3.1</TargetFramework> -->
+    <!--<TargetFramework>net452</TargetFramework>-->
+    <!--<TargetFramework>netcoreapp3.1</TargetFramework>-->
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Jess.DotNet.SmartExcel\Jess.DotNet.SmartExcel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TestPlatform.TestHost" Version="16.8.3" />
   </ItemGroup>
 
 </Project>
